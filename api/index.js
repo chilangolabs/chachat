@@ -1,3 +1,4 @@
+const { SECRET } = process.env
 const { middleware, constantProxy, getChatId } = require('./tgUtils')
 const { redisClient, redisKeyProxy } = require('./redisUtils')
 const get = require('lodash.get')
@@ -22,6 +23,9 @@ app.use((req, res, next) => {
 app.post('*', (req, res) => {
   if (req.body === null) {
     return res.status(400).send({ error: 'no JSON object in the request' })
+  }
+  if (req.query.token !== SECRET) {
+    return res.status(403).send({ error: 'No authorized' })
   }
 
   middleware(req, res)(async dispatcher => {

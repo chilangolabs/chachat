@@ -8,6 +8,7 @@
   "env": {
     "REDIS_ENDPOINT": "@redis-endpoint",
     "REDIS_PASSWORD": "@redis-password",
-    "TELEGRAM_TOKEN": "@telegram-token"
+    "TELEGRAM_TOKEN": "@telegram-token",
+    "SECRET": "@chachat-secret"
   }
 }
